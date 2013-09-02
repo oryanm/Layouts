@@ -7,9 +7,9 @@ import java.awt.*;
 public class BorderLayoutBuilder<T extends JPanel> {
 	private T panel;
 
-	protected BorderLayoutBuilder(T panel, int hgap, int vgap) {
+	protected BorderLayoutBuilder(T panel, int horizontalGap, int verticalGap) {
 		this.panel = panel;
-		this.panel.setLayout(new BorderLayout(hgap, vgap));
+		this.panel.setLayout(new BorderLayout(horizontalGap, verticalGap));
 	}
 
 	public T getPanel() {

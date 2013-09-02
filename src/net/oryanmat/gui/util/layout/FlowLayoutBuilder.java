@@ -8,9 +8,9 @@ public class FlowLayoutBuilder<T extends JPanel> {
 	private T panel;
 
 	@SuppressWarnings("MagicConstant")
-	protected FlowLayoutBuilder(T panel, int align, int hgap, int vgap) {
+	protected FlowLayoutBuilder(T panel, int align, int horizontalGap, int verticalGap) {
 		this.panel = panel;
-		this.panel.setLayout(new FlowLayout(align, hgap, vgap));
+		this.panel.setLayout(new FlowLayout(align, horizontalGap, verticalGap));
 	}
 
 	public T getPanel() {

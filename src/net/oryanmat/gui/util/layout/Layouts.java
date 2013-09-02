@@ -10,16 +10,16 @@ public class Layouts {
 			return buildPanel(0, 0);
 		}
 
-		public static BorderLayoutBuilder<JPanel> buildPanel(int hgap, int vgap) {
-			return buildPanel(new JPanel(), hgap, vgap);
+		public static BorderLayoutBuilder<JPanel> buildPanel(int horizontalGap, int verticalGap) {
+			return buildPanel(new JPanel(), horizontalGap, verticalGap);
 		}
 
 		public static <T extends JPanel> BorderLayoutBuilder<T> buildPanel(T panel) {
 			return buildPanel(panel, 0, 0);
 		}
 
-		public static <T extends JPanel> BorderLayoutBuilder<T> buildPanel(T panel, int hgap, int vgap) {
-			return new BorderLayoutBuilder<T>(panel, hgap, vgap);
+		public static <T extends JPanel> BorderLayoutBuilder<T> buildPanel(T panel, int horizontalGap, int verticalGap) {
+			return new BorderLayoutBuilder<T>(panel, horizontalGap, verticalGap);
 		}
 	}
 
@@ -32,8 +32,8 @@ public class Layouts {
 			return getPanel(new JPanel(), align, components);
 		}
 
-		public static JPanel getJPanel(int align, int hgap, int vgap, Component... components) {
-			return getPanel(new JPanel(), align, hgap, vgap, components);
+		public static JPanel getJPanel(int align, int horizontalGap, int verticalGap, Component... components) {
+			return getPanel(new JPanel(), align, horizontalGap, verticalGap, components);
 		}
 
 		public static <T extends JPanel> T getPanel(T panel, Component... components) {
@@ -44,8 +44,8 @@ public class Layouts {
 			return getPanel(panel, align, 5, 5, components);
 		}
 
-		public static <T extends JPanel> T getPanel(T panel, int align, int hgap, int vgap, Component... components) {
-			return buildPanel(panel, align, hgap, vgap, components).getPanel();
+		public static <T extends JPanel> T getPanel(T panel, int align, int horizontalGap, int verticalGap, Component... components) {
+			return buildPanel(panel, align, horizontalGap, verticalGap, components).getPanel();
 		}
 
 		public static <T extends JPanel> FlowLayoutBuilder<T> buildPanel(T panel, Component... components) {
@@ -56,8 +56,8 @@ public class Layouts {
 			return buildPanel(panel, align, 5, 5, components);
 		}
 
-		public static <T extends JPanel> FlowLayoutBuilder<T> buildPanel(T panel, int align, int hgap, int vgap, Component... components) {
-			return new FlowLayoutBuilder<T>(panel, align, hgap, vgap).add(components);
+		public static <T extends JPanel> FlowLayoutBuilder<T> buildPanel(T panel, int align, int horizontalGap, int verticalGap, Component... components) {
+			return new FlowLayoutBuilder<T>(panel, align, horizontalGap, verticalGap).add(components);
 		}
 	}
 
