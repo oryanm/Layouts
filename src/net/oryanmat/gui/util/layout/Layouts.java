@@ -6,11 +6,11 @@ import java.awt.*;
 @SuppressWarnings("UnusedDeclaration")
 public class Layouts {
 	public static class Border {
-		public static BorderLayoutBuilder<JPanel> buildPanel() {
-			return buildPanel(0, 0);
+		public static BorderLayoutBuilder<JPanel> buildJPanel() {
+			return buildJPanel(0, 0);
 		}
 
-		public static BorderLayoutBuilder<JPanel> buildPanel(int horizontalGap, int verticalGap) {
+		public static BorderLayoutBuilder<JPanel> buildJPanel(int horizontalGap, int verticalGap) {
 			return buildPanel(new JPanel(), horizontalGap, verticalGap);
 		}
 
