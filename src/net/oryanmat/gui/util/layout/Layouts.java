@@ -5,6 +5,20 @@ import java.awt.*;
 
 @SuppressWarnings("UnusedDeclaration")
 public class Layouts {
+	public static class Grid {
+		public static <C extends Container> GridLayoutBuilder<C> buildContainer(C container) {
+			return buildContainer(container, 1, 0);
+		}
+
+		public static <C extends Container> GridLayoutBuilder<C> buildContainer(C container, int rows, int columns) {
+			return buildContainer(container, rows, columns, 0, 0);
+		}
+
+		public static <C extends Container> GridLayoutBuilder<C> buildContainer(C container, int rows, int columns, int horizontalGap, int verticalGap) {
+			return new GridLayoutBuilder<C>(container, rows, columns, horizontalGap, verticalGap);
+		}
+	}
+
 	public static class Border {
 		public static BorderLayoutBuilder<JPanel> buildJPanel() {
 			return buildJPanel(0, 0);
@@ -14,12 +28,12 @@ public class Layouts {
 			return buildContainer(new JPanel(), horizontalGap, verticalGap);
 		}
 
-		public static <T extends Container> BorderLayoutBuilder<T> buildContainer(T container) {
+		public static <C extends Container> BorderLayoutBuilder<C> buildContainer(C container) {
 			return buildContainer(container, 0, 0);
 		}
 
-		public static <T extends Container> BorderLayoutBuilder<T> buildContainer(T container, int horizontalGap, int verticalGap) {
-			return new BorderLayoutBuilder<T>(container, horizontalGap, verticalGap);
+		public static <C extends Container> BorderLayoutBuilder<C> buildContainer(C container, int horizontalGap, int verticalGap) {
+			return new BorderLayoutBuilder<C>(container, horizontalGap, verticalGap);
 		}
 	}
 
@@ -36,28 +50,28 @@ public class Layouts {
 			return getContainer(new JPanel(), align, horizontalGap, verticalGap, components);
 		}
 
-		public static <T extends Container> T getContainer(T container, Component... components) {
+		public static <C extends Container> C getContainer(C container, Component... components) {
 			return getContainer(container, FlowLayout.CENTER, components);
 		}
 
-		public static <T extends Container> T getContainer(T container, int align, Component... components) {
+		public static <C extends Container> C getContainer(C container, int align, Component... components) {
 			return getContainer(container, align, 5, 5, components);
 		}
 
-		public static <T extends Container> T getContainer(T container, int align, int horizontalGap, int verticalGap, Component... components) {
+		public static <C extends Container> C getContainer(C container, int align, int horizontalGap, int verticalGap, Component... components) {
 			return buildContainer(container, align, horizontalGap, verticalGap, components).getContainer();
 		}
 
-		public static <T extends Container> FlowLayoutBuilder<T> buildContainer(T container, Component... components) {
+		public static <C extends Container> FlowLayoutBuilder<C> buildContainer(C container, Component... components) {
 			return buildContainer(container, FlowLayout.CENTER, components);
 		}
 
-		public static <T extends Container> FlowLayoutBuilder<T> buildContainer(T container, int align, Component... components) {
+		public static <C extends Container> FlowLayoutBuilder<C> buildContainer(C container, int align, Component... components) {
 			return buildContainer(container, align, 5, 5, components);
 		}
 
-		public static <T extends Container> FlowLayoutBuilder<T> buildContainer(T container, int align, int horizontalGap, int verticalGap, Component... components) {
-			return new FlowLayoutBuilder<T>(container, align, horizontalGap, verticalGap).add(components);
+		public static <C extends Container> FlowLayoutBuilder<C> buildContainer(C container, int align, int horizontalGap, int verticalGap, Component... components) {
+			return new FlowLayoutBuilder<C>(container, align, horizontalGap, verticalGap).add(components);
 		}
 	}
 
@@ -78,52 +92,52 @@ public class Layouts {
 			return getVerticalContainer(new JPanel(), components);
 		}
 
-		public static <T extends Container> T getHorizontalContainer(T container, Component... components) {
+		public static <C extends Container> C getHorizontalContainer(C container, Component... components) {
 			return getContainer(container, BoxLayout.LINE_AXIS, components);
 		}
 
-		public static <T extends Container> T getVerticalContainer(T container, Component... components) {
+		public static <C extends Container> C getVerticalContainer(C container, Component... components) {
 			return getContainer(container, BoxLayout.PAGE_AXIS, components);
 		}
 
-		public static <T extends Container> T getHorizontalContainer(T container, int gap, Component... components) {
+		public static <C extends Container> C getHorizontalContainer(C container, int gap, Component... components) {
 			return getContainer(container, BoxLayout.LINE_AXIS, gap, components);
 		}
 
-		public static <T extends Container> T getVerticalContainer(T container, int gap, Component... components) {
+		public static <C extends Container> C getVerticalContainer(C container, int gap, Component... components) {
 			return getContainer(container, BoxLayout.PAGE_AXIS, gap, components);
 		}
 
-		private static <T extends Container> T getContainer(T container, int axis, Component... components) {
+		private static <C extends Container> C getContainer(C container, int axis, Component... components) {
 			return buildContainer(container, axis, components).getContainer();
 		}
 
-		private static <T extends Container> T getContainer(T container, int axis, int gap, Component... components) {
+		private static <C extends Container> C getContainer(C container, int axis, int gap, Component... components) {
 			return buildContainer(container, axis, gap, components).getContainer();
 		}
 
-		public static <T extends Container> BoxLayoutBuilder<T> buildHorizontalContainer(T container, Component... components) {
+		public static <C extends Container> BoxLayoutBuilder<C> buildHorizontalContainer(C container, Component... components) {
 			return buildContainer(container, BoxLayout.LINE_AXIS, components);
 		}
 
-		public static <T extends Container> BoxLayoutBuilder<T> buildVerticalContainer(T container, Component... components) {
+		public static <C extends Container> BoxLayoutBuilder<C> buildVerticalContainer(C container, Component... components) {
 			return buildContainer(container, BoxLayout.PAGE_AXIS, components);
 		}
 
-		public static <T extends Container> BoxLayoutBuilder<T> buildHorizontalContainer(T container, int gap, Component... components) {
+		public static <C extends Container> BoxLayoutBuilder<C> buildHorizontalContainer(C container, int gap, Component... components) {
 			return buildContainer(container, BoxLayout.LINE_AXIS, gap, components);
 		}
 
-		public static <T extends Container> BoxLayoutBuilder<T> buildVerticalContainer(T container, int gap, Component... components) {
+		public static <C extends Container> BoxLayoutBuilder<C> buildVerticalContainer(C container, int gap, Component... components) {
 			return buildContainer(container, BoxLayout.PAGE_AXIS, gap, components);
 		}
 
-		private static <T extends Container> BoxLayoutBuilder<T> buildContainer(T container, int axis, Component... components) {
-			return new BoxLayoutBuilder<T>(container, axis).add(components);
+		private static <C extends Container> BoxLayoutBuilder<C> buildContainer(C container, int axis, Component... components) {
+			return new BoxLayoutBuilder<C>(container, axis).add(components);
 		}
 
-		private static <T extends Container> BoxLayoutBuilder<T> buildContainer(T container, int axis, int gap, Component... components) {
-			return new BoxLayoutBuilder<T>(container, axis, gap).add(components);
+		private static <C extends Container> BoxLayoutBuilder<C> buildContainer(C container, int axis, int gap, Component... components) {
+			return new BoxLayoutBuilder<C>(container, axis, gap).add(components);
 		}
 	}
 }
