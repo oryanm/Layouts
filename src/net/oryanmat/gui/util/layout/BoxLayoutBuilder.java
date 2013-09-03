@@ -4,23 +4,23 @@ import javax.swing.*;
 import java.awt.*;
 
 @SuppressWarnings("UnusedDeclaration")
-public class BoxLayoutBuilder<T extends JPanel> {
-	private T panel;
+public class BoxLayoutBuilder<T extends Container> {
+	private T container;
 	private int gap = 0;
 
-	protected BoxLayoutBuilder(T panel, int axis, int gap) {
-		this(panel, axis);
+	protected BoxLayoutBuilder(T container, int axis, int gap) {
+		this(container, axis);
 		this.gap = gap;
 	}
 
 	@SuppressWarnings("MagicConstant")
-	protected BoxLayoutBuilder(T panel, int axis) {
-		this.panel = panel;
-		this.panel.setLayout(new BoxLayout(this.panel, axis));
+	protected BoxLayoutBuilder(T container, int axis) {
+		this.container = container;
+		this.container.setLayout(new BoxLayout(this.container, axis));
 	}
 
-	public T getPanel() {
-		return this.panel;
+	public T getContainer() {
+		return this.container;
 	}
 
 	public BoxLayoutBuilder<T> setGap(int gap) {
@@ -30,11 +30,11 @@ public class BoxLayoutBuilder<T extends JPanel> {
 
 	public BoxLayoutBuilder<T> add(Component... components) {
 		for (Component component : components) {
-			if (gap > 0) panel.add(createRigidArea(gap));
-			this.panel.add(component);
+			if (gap > 0) container.add(createRigidArea(gap));
+			this.container.add(component);
 		}
 
-		if (gap > 0) panel.add(createRigidArea(gap));
+		if (gap > 0) container.add(createRigidArea(gap));
 
 		return this;
 	}
