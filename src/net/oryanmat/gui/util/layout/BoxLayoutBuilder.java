@@ -4,31 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 
 @SuppressWarnings("UnusedDeclaration")
-public class BoxLayoutBuilder<T extends Container> {
-	private T container;
+public class BoxLayoutBuilder<C extends Container> extends AbstractBuilder<C, BoxLayout>{
 	private int gap = 0;
 
-	protected BoxLayoutBuilder(T container, int axis, int gap) {
+	protected BoxLayoutBuilder(C container, int axis, int gap) {
 		this(container, axis);
 		this.gap = gap;
 	}
 
 	@SuppressWarnings("MagicConstant")
-	protected BoxLayoutBuilder(T container, int axis) {
-		this.container = container;
-		this.container.setLayout(new BoxLayout(this.container, axis));
+	protected BoxLayoutBuilder(C container, int axis) {
+		super(container, new BoxLayout(container, axis));
 	}
 
-	public T getContainer() {
-		return this.container;
-	}
-
-	public BoxLayoutBuilder<T> setGap(int gap) {
+	public BoxLayoutBuilder<C> setGap(int gap) {
 		this.gap = gap;
 		return this;
 	}
 
-	public BoxLayoutBuilder<T> add(Component... components) {
+	public BoxLayoutBuilder<C> add(Component... components) {
 		for (Component component : components) {
 			if (gap > 0) container.add(createRigidArea(gap));
 			this.container.add(component);
