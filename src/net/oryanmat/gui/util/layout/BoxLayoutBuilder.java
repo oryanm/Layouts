@@ -33,6 +33,11 @@ public class BoxLayoutBuilder<C extends Container> extends AbstractBuilder<C, Bo
 		return this;
 	}
 
+	public BoxLayoutBuilder<C> addGlue() {
+		container.add(Box.createGlue());
+		return this;
+	}
+
 	private static Component createRigidArea(int gap) {
 		return Box.createRigidArea(new Dimension(gap, gap));
 	}
