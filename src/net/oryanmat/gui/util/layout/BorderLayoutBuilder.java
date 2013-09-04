@@ -8,6 +8,20 @@ public class BorderLayoutBuilder<C extends Container> extends AbstractBuilder<C,
 		super(container, new BorderLayout(horizontalGap, verticalGap));
 	}
 
+	protected BorderLayoutBuilder(C container) {
+		super(container, new BorderLayout());
+	}
+
+	public BorderLayoutBuilder<C> setHorizontalGap(int horizontalGap) {
+		layout.setHgap(horizontalGap);
+		return this;
+	}
+
+	public BorderLayoutBuilder<C> setVerticalGap(int verticalGap) {
+		layout.setVgap(verticalGap);
+		return this;
+	}
+
 	public BorderLayoutBuilder<C> setCenter(Component component) {
 		this.container.add(component, BorderLayout.CENTER);
 		return this;
