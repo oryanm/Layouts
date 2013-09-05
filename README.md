@@ -40,7 +40,7 @@ Layouts.Grid.buildJPanel().setRows(2).setColumns(3)
 Notice the use of the word `build` instead of `get` and the call to `getContainer()` at the end. 
 This stems from the fact that just adding components to Border and Grid panels is not enough, 
 we also need to specify where the component is added to. 
-Although this is not entirely true in regards to GridLayout, it does offer better readabilty.
+Although this is not entirely true in regards to `GridLayout`, it does offer better readabilty.
 
 Builders
 --------
@@ -71,3 +71,47 @@ Layouts.Box.getVerticalContainer(new XPanel(), component1, component2, ..., comp
 // or any other component for that matter
 Layouts.Grid.buildContainer(new JButton()).addRow(component1, component2, ..., componentN)
 ```
+
+Composition
+-----------
+Since `Container extends Component`, we can combine all of the above to create one big mess:
+```java
+Layouts.Border.buildContainer(frame.getContentPane()).setCenter(
+    Layouts.Border.buildJPanel()
+        .setNorth(Layouts.Flow.buildContainer(new XPanel())
+            .setAlign(FlowLayout.Center)
+            .setHorizontalGap(5)
+            .setVerticalGap(5)
+            .add(Layouts.Box.getHorizontalJPanel(component1, component2, ..., componentN)).getContainer())
+        .setEast(eastComponent).setCenter(Layouts.Grid.buildJPanel().setRows(2).setColumns(3)
+            .addRow(component1, component2, component3)
+            .addRow(component4, component5, component6).getContainer()).setWest(westComponent)
+        .setSouth(Layouts.Grid.buildContainer(new JButton())
+            .addRow(component1, component2, ..., componentN)).getContainer());
+```
+
+Or something more sensible:
+```java
+Layouts.Border.buildContainer(frame.getContentPane())
+	.setCenter((Layouts.Border.buildJPanel()
+		.setNorth(Layouts.Box.getVerticalJPanel(
+			Layouts.Border.buildJPanel()
+				.setNorth(label)
+				.setCenter(Layouts.Flow.getJPanel(FlowLayout.LEFT, label1, value, label2, field)).getContainer(),
+			Layouts.Border.buildJPanel()
+				.setNorth(label3)
+				.setCenter(Layouts.Flow.getJPanel(FlowLayout.LEFT, label4, stuff, label5, more)).getContainer()))
+		.setCenter(Layouts.Border.buildJPanel()
+			.setNorth(label6)
+			.setCenter(scrollPane).getContainer())
+		.setSouth(Layouts.Box.getVerticalJPanel(
+			Layouts.Border.buildJPanel()
+				.setNorth(label7)
+				.setCenter(Layouts.Flow.getJPanel(FlowLayout.LEFT, label8, stuff1, label9, more1)).getContainer(),
+			Layouts.Flow.getJPanel(FlowLayout.RIGHT, ok, exit))).getContainer()));
+
+```
+
+Which results in:
+
+![Code Example](http://i.imgur.com/AT7Ud98.jpg "Code Example")
