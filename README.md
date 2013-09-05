@@ -64,7 +64,7 @@ The `buildContainer()` and `getContainer()` methods alow us to use anything that
 JFrame frame = ...
 Layouts.Border.buildContainer(frame.getContentPane()).setCenter(...);
 
-// use our own implemtaion of JPanel
+// use our own implementation of JPanel
 class XPanel extends JPanel {...}
 Layouts.Box.getVerticalContainer(new XPanel(), component1, component2, ..., componentN)
 
