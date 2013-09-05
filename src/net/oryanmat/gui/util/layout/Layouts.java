@@ -6,6 +6,18 @@ import java.awt.*;
 @SuppressWarnings("UnusedDeclaration")
 public class Layouts {
 	public static class Grid {
+		public static GridLayoutBuilder<JPanel> buildJPanel() {
+			return buildContainer(new JPanel());
+		}
+
+		public static GridLayoutBuilder<JPanel> buildJPanel(int rows, int columns) {
+			return buildJPanel().setRows(rows).setColumns(columns);
+		}
+
+		public static GridLayoutBuilder<JPanel> buildJPanel(int rows, int columns, int horizontalGap, int verticalGap) {
+			return buildJPanel(rows, columns).setHorizontalGap(horizontalGap).setVerticalGap(verticalGap);
+		}
+
 		public static <C extends Container> GridLayoutBuilder<C> buildContainer(C container) {
 			return buildContainer(container, 1, 0);
 		}

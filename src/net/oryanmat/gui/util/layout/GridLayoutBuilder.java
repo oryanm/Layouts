@@ -17,6 +17,16 @@ public class GridLayoutBuilder<C extends Container> extends AbstractBuilder<C, G
 		return this;
 	}
 
+	public GridLayoutBuilder<C> setRows(int rows) {
+		layout.setRows(rows);
+		return this;
+	}
+
+	public GridLayoutBuilder<C> setColumns(int columns) {
+		layout.setColumns(columns);
+		return this;
+	}
+
 	public GridLayoutBuilder<C> addRow(Component... components) {
 		for (Component component : components) {
 			container.add(component);
