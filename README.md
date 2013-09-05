@@ -30,7 +30,7 @@ Border and Grid are a tiny bit more complex:
 ```java
 Layouts.Border.buildJPanel()
 	.setNorth(northComponent)
-	.setEast(eastComponent).setCenter(centerComponent).setWest(westComponent)
+	.setWest(eastComponent).setCenter(centerComponent).setEast(westComponent)
 	.setSouth(southComponent).getContainer();
 
 Layouts.Grid.buildJPanel().setRows(2).setColumns(3)
@@ -83,9 +83,9 @@ Layouts.Border.buildContainer(frame.getContentPane()).setCenter(
 			.setHorizontalGap(5)
 			.setVerticalGap(5)
 			.add(Layouts.Box.getHorizontalJPanel(component1, component2, ..., componentN)).getContainer())
-		.setEast(eastComponent).setCenter(Layouts.Grid.buildJPanel().setRows(2).setColumns(3)
+		.setWest(eastComponent).setCenter(Layouts.Grid.buildJPanel().setRows(2).setColumns(3)
 			.addRow(component1, component2, component3)
-			.addRow(component4, component5, component6).getContainer()).setWest(westComponent)
+			.addRow(component4, component5, component6).getContainer()).setEast(westComponent)
 		.setSouth(Layouts.Grid.buildContainer(new JButton())
 			.addRow(component1, component2, ..., componentN)).getContainer());
 ```
