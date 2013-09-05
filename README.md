@@ -29,13 +29,13 @@ Layouts.Box.getVerticalJPanel(component1, component2, ..., componentN);
 Border and Grid are a tiny bit more complex:
 ```java
 Layouts.Border.buildJPanel()
-    .setNorth(northComponent)
-    .setEast(eastComponent).setCenter(centerComponent).setWest(westComponent)
-    .setSouth(southComponent).getContainer();
+	.setNorth(northComponent)
+	.setEast(eastComponent).setCenter(centerComponent).setWest(westComponent)
+	.setSouth(southComponent).getContainer();
 
 Layouts.Grid.buildJPanel().setRows(2).setColumns(3)
-    .addRow(component1, component2, component3)
-    .addRow(component4, component5, component6).getContainer();
+	.addRow(component1, component2, component3)
+	.addRow(component4, component5, component6).getContainer();
 ```
 Notice the use of the word `build` instead of `get` and the call to `getContainer()` at the end. 
 This stems from the fact that just adding components to Border and Grid panels is not enough, 
@@ -50,10 +50,10 @@ All of the builder's methods return `this`, allowing us to chain together calls.
 For example, the `FlowLayoutBuilder` exposes these methods:
 ```java
 Layouts.Flow.buildContainer(...)
-    .setAlign(FlowLayout.Center)
-    .setHorizontalGap(5)
-    .setVerticalGap(5)
-    .add(Components);
+	.setAlign(FlowLayout.Center)
+	.setHorizontalGap(5)
+	.setVerticalGap(5)
+	.add(Components);
 ```
 
 Containers
@@ -77,17 +77,17 @@ Composition
 Since `Container extends Component`, we can combine all of the above to create one big mess:
 ```java
 Layouts.Border.buildContainer(frame.getContentPane()).setCenter(
-    Layouts.Border.buildJPanel()
-        .setNorth(Layouts.Flow.buildContainer(new XPanel())
-            .setAlign(FlowLayout.Center)
-            .setHorizontalGap(5)
-            .setVerticalGap(5)
-            .add(Layouts.Box.getHorizontalJPanel(component1, component2, ..., componentN)).getContainer())
-        .setEast(eastComponent).setCenter(Layouts.Grid.buildJPanel().setRows(2).setColumns(3)
-            .addRow(component1, component2, component3)
-            .addRow(component4, component5, component6).getContainer()).setWest(westComponent)
-        .setSouth(Layouts.Grid.buildContainer(new JButton())
-            .addRow(component1, component2, ..., componentN)).getContainer());
+	Layouts.Border.buildJPanel()
+		.setNorth(Layouts.Flow.buildContainer(new XPanel())
+			.setAlign(FlowLayout.Center)
+			.setHorizontalGap(5)
+			.setVerticalGap(5)
+			.add(Layouts.Box.getHorizontalJPanel(component1, component2, ..., componentN)).getContainer())
+		.setEast(eastComponent).setCenter(Layouts.Grid.buildJPanel().setRows(2).setColumns(3)
+			.addRow(component1, component2, component3)
+			.addRow(component4, component5, component6).getContainer()).setWest(westComponent)
+		.setSouth(Layouts.Grid.buildContainer(new JButton())
+			.addRow(component1, component2, ..., componentN)).getContainer());
 ```
 
 Or something more sensible:
@@ -109,7 +109,6 @@ Layouts.Border.buildContainer(frame.getContentPane())
 				.setNorth(label7)
 				.setCenter(Layouts.Flow.getJPanel(FlowLayout.LEFT, label8, stuff1, label9, more1)).getContainer(),
 			Layouts.Flow.getJPanel(FlowLayout.RIGHT, ok, exit))).getContainer()));
-
 ```
 
 Which results in:
