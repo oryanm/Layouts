@@ -9,10 +9,6 @@ public class FlowLayoutBuilder<C extends Container> extends AbstractBuilder<C, F
 		super(container, new FlowLayout(align, horizontalGap, verticalGap));
 	}
 
-	protected FlowLayoutBuilder(C container) {
-		super(container, new FlowLayout());
-	}
-
 	@SuppressWarnings("MagicConstant")
 	public FlowLayoutBuilder<C> setAlign(int align) {
 		layout.setAlignment(align);

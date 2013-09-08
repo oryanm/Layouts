@@ -105,19 +105,19 @@ public class Layouts {
 		}
 
 		public static <C extends Container> C getHorizontalContainer(C container, Component... components) {
-			return getContainer(container, BoxLayout.LINE_AXIS, components);
+			return buildHorizontalContainer(container, components).getContainer();
 		}
 
 		public static <C extends Container> C getVerticalContainer(C container, Component... components) {
-			return getContainer(container, BoxLayout.PAGE_AXIS, components);
+			return buildVerticalContainer(container, components).getContainer();
 		}
 
 		public static <C extends Container> C getHorizontalContainer(C container, int gap, Component... components) {
-			return getContainer(container, BoxLayout.LINE_AXIS, gap, components);
+			return buildHorizontalContainer(container, gap, components).getContainer();
 		}
 
 		public static <C extends Container> C getVerticalContainer(C container, int gap, Component... components) {
-			return getContainer(container, BoxLayout.PAGE_AXIS, gap, components);
+			return buildVerticalContainer(container, gap, components).getContainer();
 		}
 
 		private static <C extends Container> C getContainer(C container, int axis, Component... components) {
@@ -149,7 +149,7 @@ public class Layouts {
 		}
 
 		private static <C extends Container> BoxLayoutBuilder<C> buildContainer(C container, int axis, int gap, Component... components) {
-			return new BoxLayoutBuilder<C>(container, axis, gap).add(components);
+			return new BoxLayoutBuilder<C>(container, axis).setGap(gap).add(components);
 		}
 	}
 }

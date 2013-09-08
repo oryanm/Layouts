@@ -8,10 +8,6 @@ public class BorderLayoutBuilder<C extends Container> extends AbstractBuilder<C,
 		super(container, new BorderLayout(horizontalGap, verticalGap));
 	}
 
-	protected BorderLayoutBuilder(C container) {
-		super(container, new BorderLayout());
-	}
-
 	public BorderLayoutBuilder<C> setHorizontalGap(int horizontalGap) {
 		layout.setHgap(horizontalGap);
 		return this;

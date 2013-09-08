@@ -7,11 +7,6 @@ import java.awt.*;
 public class BoxLayoutBuilder<C extends Container> extends AbstractBuilder<C, BoxLayout>{
 	private int gap = 0;
 
-	protected BoxLayoutBuilder(C container, int axis, int gap) {
-		this(container, axis);
-		this.gap = gap;
-	}
-
 	@SuppressWarnings("MagicConstant")
 	protected BoxLayoutBuilder(C container, int axis) {
 		super(container, new BoxLayout(container, axis));
