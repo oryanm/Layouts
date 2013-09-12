@@ -8,7 +8,7 @@ Four of Swing's basic LayoutManagers are represented:
 * Border
 * Grid
 
-Using the builder pattern and varargs, we're able to create a container, 
+Using a [fluent interface](http://en.wikipedia.org/wiki/Fluent_interface) and varargs, we're able to create a container, 
 set it's layout and add it's components in one line. 
 Since `Container extends Component`, it's also possible to compose calls to Layouts to create complex structures.
 
