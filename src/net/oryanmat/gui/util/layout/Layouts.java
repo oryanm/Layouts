@@ -5,9 +5,15 @@ import java.awt.*;
 
 @SuppressWarnings("UnusedDeclaration")
 public class Layouts {
+	static PanelBuilder panelBuilder = new JPanelBuilder();
+
+	public static void setPanelBuilder(PanelBuilder panelBuilder) {
+		Layouts.panelBuilder = panelBuilder;
+	}
+
 	public static class Grid {
 		public static GridLayoutBuilder<JPanel> buildJPanel() {
-			return buildContainer(new JPanel());
+			return buildContainer(panelBuilder.getPanel());
 		}
 
 		public static GridLayoutBuilder<JPanel> buildJPanel(int rows, int columns) {
@@ -37,7 +43,7 @@ public class Layouts {
 		}
 
 		public static BorderLayoutBuilder<JPanel> buildJPanel(int horizontalGap, int verticalGap) {
-			return buildContainer(new JPanel(), horizontalGap, verticalGap);
+			return buildContainer(panelBuilder.getPanel(), horizontalGap, verticalGap);
 		}
 
 		public static <C extends Container> BorderLayoutBuilder<C> buildContainer(C container) {
@@ -51,15 +57,15 @@ public class Layouts {
 
 	public static class Flow {
 		public static JPanel getJPanel(Component... components) {
-			return getContainer(new JPanel(), components);
+			return getContainer(panelBuilder.getPanel(), components);
 		}
 
 		public static JPanel getJPanel(int align, Component... components) {
-			return getContainer(new JPanel(), align, components);
+			return getContainer(panelBuilder.getPanel(), align, components);
 		}
 
 		public static JPanel getJPanel(int align, int horizontalGap, int verticalGap, Component... components) {
-			return getContainer(new JPanel(), align, horizontalGap, verticalGap, components);
+			return getContainer(panelBuilder.getPanel(), align, horizontalGap, verticalGap, components);
 		}
 
 		public static <C extends Container> C getContainer(C container, Component... components) {
@@ -89,19 +95,19 @@ public class Layouts {
 
 	public static class Box {
 		public static JPanel getHorizontalJPanel(int gap, Component... components) {
-			return getHorizontalContainer(new JPanel(), gap, components);
+			return getHorizontalContainer(panelBuilder.getPanel(), gap, components);
 		}
 
 		public static JPanel getVerticalJPanel(int gap, Component... components) {
-			return getVerticalContainer(new JPanel(), gap, components);
+			return getVerticalContainer(panelBuilder.getPanel(), gap, components);
 		}
 
 		public static JPanel getHorizontalJPanel(Component... components) {
-			return getHorizontalContainer(new JPanel(), components);
+			return getHorizontalContainer(panelBuilder.getPanel(), components);
 		}
 
 		public static JPanel getVerticalJPanel(Component... components) {
-			return getVerticalContainer(new JPanel(), components);
+			return getVerticalContainer(panelBuilder.getPanel(), components);
 		}
 
 		public static <C extends Container> C getHorizontalContainer(C container, Component... components) {
