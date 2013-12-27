@@ -1,26 +1,30 @@
 package net.oryanmat.gui.util.layout;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.FlowLayout;
 
-@SuppressWarnings("UnusedDeclaration")
 public class Layouts {
-	static PanelBuilder panelBuilder = new JPanelBuilder();
+	static PanelFactory panelFactory = new JPanelFactory();
 
-	public static void setPanelBuilder(PanelBuilder panelBuilder) {
-		Layouts.panelBuilder = panelBuilder;
+	private Layouts() {}
+
+	public static void setPanelFactory(PanelFactory<? extends JPanel> panelFactory) {
+		Layouts.panelFactory = panelFactory;
 	}
 
 	public static class Grid {
-		public static GridLayoutBuilder<JPanel> buildJPanel() {
-			return buildContainer(panelBuilder.getPanel());
+		public static GridLayoutBuilder<? extends JPanel> buildJPanel() {
+			return buildContainer(panelFactory.getPanel());
 		}
 
-		public static GridLayoutBuilder<JPanel> buildJPanel(int rows, int columns) {
+		public static GridLayoutBuilder<? extends JPanel> buildJPanel(int rows, int columns) {
 			return buildJPanel().setRows(rows).setColumns(columns);
 		}
 
-		public static GridLayoutBuilder<JPanel> buildJPanel(int rows, int columns, int horizontalGap, int verticalGap) {
+		public static GridLayoutBuilder<? extends JPanel> buildJPanel(int rows, int columns, int horizontalGap, int verticalGap) {
 			return buildJPanel(rows, columns).setHorizontalGap(horizontalGap).setVerticalGap(verticalGap);
 		}
 
@@ -43,7 +47,7 @@ public class Layouts {
 		}
 
 		public static BorderLayoutBuilder<JPanel> buildJPanel(int horizontalGap, int verticalGap) {
-			return buildContainer(panelBuilder.getPanel(), horizontalGap, verticalGap);
+			return buildContainer(panelFactory.getPanel(), horizontalGap, verticalGap);
 		}
 
 		public static <C extends Container> BorderLayoutBuilder<C> buildContainer(C container) {
@@ -57,15 +61,15 @@ public class Layouts {
 
 	public static class Flow {
 		public static JPanel getJPanel(Component... components) {
-			return getContainer(panelBuilder.getPanel(), components);
+			return getContainer(panelFactory.getPanel(), components);
 		}
 
 		public static JPanel getJPanel(int align, Component... components) {
-			return getContainer(panelBuilder.getPanel(), align, components);
+			return getContainer(panelFactory.getPanel(), align, components);
 		}
 
 		public static JPanel getJPanel(int align, int horizontalGap, int verticalGap, Component... components) {
-			return getContainer(panelBuilder.getPanel(), align, horizontalGap, verticalGap, components);
+			return getContainer(panelFactory.getPanel(), align, horizontalGap, verticalGap, components);
 		}
 
 		public static <C extends Container> C getContainer(C container, Component... components) {
@@ -95,19 +99,19 @@ public class Layouts {
 
 	public static class Box {
 		public static JPanel getHorizontalJPanel(int gap, Component... components) {
-			return getHorizontalContainer(panelBuilder.getPanel(), gap, components);
+			return getHorizontalContainer(panelFactory.getPanel(), gap, components);
 		}
 
 		public static JPanel getVerticalJPanel(int gap, Component... components) {
-			return getVerticalContainer(panelBuilder.getPanel(), gap, components);
+			return getVerticalContainer(panelFactory.getPanel(), gap, components);
 		}
 
 		public static JPanel getHorizontalJPanel(Component... components) {
-			return getHorizontalContainer(panelBuilder.getPanel(), components);
+			return getHorizontalContainer(panelFactory.getPanel(), components);
 		}
 
 		public static JPanel getVerticalJPanel(Component... components) {
-			return getVerticalContainer(panelBuilder.getPanel(), components);
+			return getVerticalContainer(panelFactory.getPanel(), components);
 		}
 
 		public static <C extends Container> C getHorizontalContainer(C container, Component... components) {

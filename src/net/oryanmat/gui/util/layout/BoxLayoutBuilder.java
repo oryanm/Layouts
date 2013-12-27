@@ -1,9 +1,11 @@
 package net.oryanmat.gui.util.layout;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
 
-@SuppressWarnings("UnusedDeclaration")
 public class BoxLayoutBuilder<C extends Container> extends AbstractBuilder<C, BoxLayout>{
 	private int gap = 0;
 

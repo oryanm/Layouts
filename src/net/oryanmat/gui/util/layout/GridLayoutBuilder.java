@@ -1,6 +1,8 @@
 package net.oryanmat.gui.util.layout;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.GridLayout;
 
 public class GridLayoutBuilder<C extends Container> extends AbstractBuilder<C, GridLayout> {
 	protected GridLayoutBuilder(C container, int rows, int columns, int horizontalGap, int verticalGap) {

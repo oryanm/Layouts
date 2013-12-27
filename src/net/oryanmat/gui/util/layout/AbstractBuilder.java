@@ -1,6 +1,7 @@
 package net.oryanmat.gui.util.layout;
 
-import java.awt.*;
+import java.awt.Container;
+import java.awt.LayoutManager;
 
 public class AbstractBuilder<C extends Container, L extends LayoutManager> {
 	protected C container;

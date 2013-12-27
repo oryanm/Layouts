@@ -1,8 +1,9 @@
 package net.oryanmat.gui.util.layout;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
 
-@SuppressWarnings("UnusedDeclaration")
 public class BorderLayoutBuilder<C extends Container> extends AbstractBuilder<C, BorderLayout> {
 	protected BorderLayoutBuilder(C container, int horizontalGap, int verticalGap) {
 		super(container, new BorderLayout(horizontalGap, verticalGap));

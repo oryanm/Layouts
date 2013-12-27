@@ -1,8 +1,9 @@
 package net.oryanmat.gui.util.layout;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.FlowLayout;
 
-@SuppressWarnings("UnusedDeclaration")
 public class FlowLayoutBuilder<C extends Container> extends AbstractBuilder<C, FlowLayout>{
 	@SuppressWarnings("MagicConstant")
 	protected FlowLayoutBuilder(C container, int align, int horizontalGap, int verticalGap) {
