@@ -12,6 +12,11 @@ public class Layouts {
 	private Layouts() {}
 
 	public static class Grid {
+		public static final int DEFAULT_ROW_NUM = 1;
+		public static final int DEFAULT_COLUMNS_NUM = 0;
+		public static final int DEFAULT_HORIZONTAL_GAP = 0;
+		public static final int DEFAULT_VERTICAL_GAP = 0;
+
 		private Grid() {}
 
 		public static GridLayoutBuilder<JPanel> buildJPanel() {
@@ -27,11 +32,11 @@ public class Layouts {
 		}
 
 		public static <C extends Container> GridLayoutBuilder<C> buildContainer(C container) {
-			return buildContainer(container, 1, 0);
+			return buildContainer(container, DEFAULT_ROW_NUM, DEFAULT_COLUMNS_NUM);
 		}
 
 		public static <C extends Container> GridLayoutBuilder<C> buildContainer(C container, int rows, int columns) {
-			return buildContainer(container, rows, columns, 0, 0);
+			return buildContainer(container, rows, columns, DEFAULT_HORIZONTAL_GAP, DEFAULT_VERTICAL_GAP);
 		}
 
 		public static <C extends Container> GridLayoutBuilder<C> buildContainer(C container, int rows, int columns, int horizontalGap, int verticalGap) {
@@ -40,10 +45,13 @@ public class Layouts {
 	}
 
 	public static class Border {
+		public static final int DEFAULT_HORIZONTAL_GAP = 0;
+		public static final int DEFAULT_VERTICAL_GAP = 0;
+
 		private Border() {}
 
 		public static BorderLayoutBuilder<JPanel> buildJPanel() {
-			return buildJPanel(0, 0);
+			return buildJPanel(DEFAULT_HORIZONTAL_GAP, DEFAULT_VERTICAL_GAP);
 		}
 
 		public static BorderLayoutBuilder<JPanel> buildJPanel(int horizontalGap, int verticalGap) {
@@ -51,7 +59,7 @@ public class Layouts {
 		}
 
 		public static <C extends Container> BorderLayoutBuilder<C> buildContainer(C container) {
-			return buildContainer(container, 0, 0);
+			return buildContainer(container, DEFAULT_HORIZONTAL_GAP, DEFAULT_VERTICAL_GAP);
 		}
 
 		public static <C extends Container> BorderLayoutBuilder<C> buildContainer(C container, int horizontalGap, int verticalGap) {
@@ -60,6 +68,10 @@ public class Layouts {
 	}
 
 	public static class Flow {
+		public static final int DEFAULT_HORIZONTAL_GAP = 5;
+		public static final int DEFAULT_VERTICAL_GAP = 5;
+		public static final int DEFAULT_ALIGNMENT = FlowLayout.CENTER;
+
 		private Flow() {}
 
 		public static JPanel getJPanel(Component... components) {
@@ -75,11 +87,11 @@ public class Layouts {
 		}
 
 		public static <C extends Container> C getContainer(C container, Component... components) {
-			return getContainer(container, FlowLayout.CENTER, components);
+			return getContainer(container, DEFAULT_ALIGNMENT, components);
 		}
 
 		public static <C extends Container> C getContainer(C container, int align, Component... components) {
-			return getContainer(container, align, 5, 5, components);
+			return getContainer(container, align, DEFAULT_HORIZONTAL_GAP, DEFAULT_VERTICAL_GAP, components);
 		}
 
 		public static <C extends Container> C getContainer(C container, int align, int horizontalGap, int verticalGap, Component... components) {
@@ -87,11 +99,11 @@ public class Layouts {
 		}
 
 		public static <C extends Container> FlowLayoutBuilder<C> buildContainer(C container, Component... components) {
-			return buildContainer(container, FlowLayout.CENTER, components);
+			return buildContainer(container, DEFAULT_ALIGNMENT, components);
 		}
 
 		public static <C extends Container> FlowLayoutBuilder<C> buildContainer(C container, int align, Component... components) {
-			return buildContainer(container, align, 5, 5, components);
+			return buildContainer(container, align, DEFAULT_HORIZONTAL_GAP, DEFAULT_VERTICAL_GAP, components);
 		}
 
 		public static <C extends Container> FlowLayoutBuilder<C> buildContainer(C container, int align, int horizontalGap, int verticalGap, Component... components) {
