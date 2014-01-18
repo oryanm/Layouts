@@ -30,7 +30,7 @@ Border and Grid are a tiny bit more complex:
 ```java
 Layouts.Border.buildJPanel()
 	.setNorth(northComponent)
-	.setWest(eastComponent).setCenter(centerComponent).setEast(westComponent)
+	.setWest(westComponent).setCenter(centerComponent).setEast(eastComponent)
 	.setSouth(southComponent).getContainer();
 
 Layouts.Grid.buildJPanel().setRows(2).setColumns(3)
@@ -40,12 +40,12 @@ Layouts.Grid.buildJPanel().setRows(2).setColumns(3)
 Notice the use of the word `build` instead of `get` and the call to `getContainer()` at the end. 
 This stems from the fact that just adding components to Border and Grid panels is not enough, 
 we also need to specify where the component is added to. 
-Although this is not entirely true in regards to `GridLayout`, it does offer better readabilty.
+Although this is not entirely true in regards to `GridLayout`, it does offer better readability.
 
 Builders
 --------
 Building a panel (as opposed to just "getting" one) will return an appropriate builder. 
-Every builder exposes all of the setters/modifiers relevent to it's layout. 
+Every builder exposes all of the setters/modifiers relevant to it's layout.
 All of the builder's methods return `this`, allowing us to chain together calls.
 For example, the `FlowLayoutBuilder` exposes these methods:
 ```java
@@ -58,7 +58,7 @@ Layouts.Flow.buildContainer(...)
 
 Containers
 ----------
-The `buildContainer()` and `getContainer()` methods alow us to use anything that `<C extends Container>` rather then just JPanels:
+The `buildContainer()` and `getContainer()` methods allow us to use anything that `<C extends Container>` rather then just JPanels:
 ```java
 // we can setup a frame's content pane
 JFrame frame = ...
