@@ -21,14 +21,17 @@
         </license>
     </licenses>
     <scm>
-        <url>scm:git:https://github.com/oryanm/Layouts/</url>
-        <connection>scm:git:https://github.com/oryanm/Layouts/</connection>
+        <connection>scm:git:git@github.com:oryanm/Layouts.git</connection>
+        <developerConnection>scm:git:git@github.com:oryanm/Layouts.git</developerConnection>
+        <url>git@github.com:oryanm/Layouts.git</url>
     </scm>
     <developers>
         <developer>
             <id>oryanm</id>
             <name>Oryan Mat</name>
             <email>oryan.mat@gmail.com</email>
+            <organization>Oryan</organization>
+            <organizationUrl>https://github.com/oryanm</organizationUrl>
         </developer>
     </developers>
     <distributionManagement>
@@ -41,6 +44,7 @@
         <sourceDirectory>src</sourceDirectory>
         <plugins>
             <plugin>
+                <!-- compiler plugin: sets java version to compile to -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
@@ -50,6 +54,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <!-- sources generator plugin -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <executions>
@@ -62,6 +67,7 @@
                 </executions>
             </plugin>
             <plugin>
+                <!-- javadoc generator plugin -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <executions>
@@ -74,6 +80,7 @@
                 </executions>
             </plugin>
             <plugin>
+                <!-- nexus plugin -->
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>1.6.2</version>
@@ -85,6 +92,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <!-- gpg plugin used to sign artifact before uploading to central -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
