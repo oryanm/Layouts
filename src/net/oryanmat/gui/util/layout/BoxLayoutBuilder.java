@@ -9,7 +9,6 @@ import java.awt.Dimension;
 public class BoxLayoutBuilder<C extends Container> extends AbstractBuilder<C, BoxLayout>{
 	private int gap = 0;
 
-	@SuppressWarnings("MagicConstant")
 	protected BoxLayoutBuilder(C container, int axis) {
 		super(container, new BoxLayout(container, axis));
 	}

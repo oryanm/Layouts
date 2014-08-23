@@ -5,12 +5,10 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 
 public class FlowLayoutBuilder<C extends Container> extends AbstractBuilder<C, FlowLayout>{
-	@SuppressWarnings("MagicConstant")
 	protected FlowLayoutBuilder(C container, int align, int horizontalGap, int verticalGap) {
 		super(container, new FlowLayout(align, horizontalGap, verticalGap));
 	}
 
-	@SuppressWarnings("MagicConstant")
 	public FlowLayoutBuilder<C> setAlign(int align) {
 		layout.setAlignment(align);
 		return this;

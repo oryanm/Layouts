@@ -41,7 +41,7 @@ public class Layouts {
 
 		public static <C extends Container> GridLayoutBuilder<C> buildContainer(
 			C container, int rows, int columns, int horizontalGap, int verticalGap) {
-			return new GridLayoutBuilder<>(container, rows, columns, horizontalGap, verticalGap);
+			return new GridLayoutBuilder<C>(container, rows, columns, horizontalGap, verticalGap);
 		}
 	}
 
@@ -78,7 +78,7 @@ public class Layouts {
 
 		public static <C extends Container> BorderLayoutBuilder<C> buildContainer(
 			C container, int horizontalGap, int verticalGap) {
-			return new BorderLayoutBuilder<>(container, horizontalGap, verticalGap);
+			return new BorderLayoutBuilder<C>(container, horizontalGap, verticalGap);
 		}
 	}
 
@@ -178,7 +178,7 @@ public class Layouts {
 
 		public static <C extends Container> FlowLayoutBuilder<C> buildContainer(
 			C container, int align, int horizontalGap, int verticalGap, Component... components) {
-			return new FlowLayoutBuilder<>(container, align, horizontalGap, verticalGap).add(components);
+			return new FlowLayoutBuilder<C>(container, align, horizontalGap, verticalGap).add(components);
 		}
 	}
 
@@ -253,12 +253,12 @@ public class Layouts {
 
 		private static <C extends Container> BoxLayoutBuilder<C> buildContainer(
 			C container, int axis, Component... components) {
-			return new BoxLayoutBuilder<>(container, axis).add(components);
+			return new BoxLayoutBuilder<C>(container, axis).add(components);
 		}
 
 		private static <C extends Container> BoxLayoutBuilder<C> buildContainer(
 			C container, int axis, int gap, Component... components) {
-			return new BoxLayoutBuilder<>(container, axis).setGap(gap).add(components);
+			return new BoxLayoutBuilder<C>(container, axis).setGap(gap).add(components);
 		}
 	}
 
