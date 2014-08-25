@@ -14,6 +14,7 @@ Since `Container extends Component`, it's also possible to compose calls to Layo
 
 How to use
 ==========
+
 Here is the most basic example:
 ```java
 Layouts.Flow.getJPanel(component1, component2, ..., componentN);
@@ -114,3 +115,14 @@ Layouts.Border.buildContainer(frame.getContentPane())
 Which results in:
 
 ![Code Example](http://i.imgur.com/AT7Ud98.jpg "Code Example")
+
+Download 
+========
+As a maven dependency:
+```
+<dependency>
+  <groupId>com.github.oryanmat</groupId>
+  <artifactId>Layouts</artifactId>
+  <version>2.0</version>
+</dependency>
+```
