@@ -1,6 +1,6 @@
 Layouts
 =======
-Layouts provides an simple, clean and readable way for arranging Swing components in containers.
+Layouts provides a simple, clean and readable way for arranging Swing components in containers.
 Layouts was built with `JPanel` in mind but works with any `Container`.
 Four of Swing's basic LayoutManagers are represented:
 * Flow
